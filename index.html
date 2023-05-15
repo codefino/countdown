@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Countdown Timer Tutorial</title>
+    <meta charset="UTF-8">    
+  </head>
+  <body>
+    <h1>Countdown Timer Tutorial</h1>
+
+    <div id="timer"></div>
+
+    <script>
+      // Set the date and time for the countdown
+      var countDownDate = new Date("May 31, 2023 12:00:00").getTime();
+
+      // Update the countdown every second
+      var x = setInterval(function() {
+
+        // Get the current date and time
+        var now = new Date().getTime();
+
+        // Calculate the distance between now and the countdown date
+        var distance = countDownDate - now;
+
+        // Calculate days, hours, minutes, and seconds remaining
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the countdown in the "timer" div
+        document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the countdown is finished, display "EXPIRED"
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("timer").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
